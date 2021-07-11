@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: lighttpd
-  name: lighttpd
+    app: traefik
+  name: traefik
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: lighttpd
+      app: traefik
   template:
     metadata:
       labels:
-        app: lighttpd
+        app: traefik
     spec:
       containers:
-      - image: lighttpd
-        name: lighttpd
+      - image: traefik
+        name: traefik
