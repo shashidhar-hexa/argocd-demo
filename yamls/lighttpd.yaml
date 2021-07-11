@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lighttpd
+  name: lighttpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lighttpd
+  template:
+    metadata:
+      labels:
+        app: lighttpd
+    spec:
+      containers:
+      - image: lighttpd
+        name: lighttpd
