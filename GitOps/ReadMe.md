@@ -1,0 +1,1 @@
+sample GitOps for argocd
