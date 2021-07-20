@@ -38,4 +38,3 @@ spec:
   selector:
     app: {{ template "helm-guestbook.name" . }}
     release: {{ .Release.Name }}
-© 2021 GitHub, Inc.
