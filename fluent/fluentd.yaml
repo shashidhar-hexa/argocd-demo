@@ -67,7 +67,7 @@ spec:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: "13.232.86.173"
           - name:  FLUENT_ELASTICSEARCH_PORT
-            value: "30345"
+            value: "9200"
           - name: FLUENT_ELASTICSEARCH_SCHEME
             value: "http"    
           # =====================
