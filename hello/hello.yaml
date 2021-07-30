@@ -1,16 +1,39 @@
+# This example demonstrates the ability to pass artifacts
+# from one step to the next.
 apiVersion: argoproj.io/v1alpha1
-kind: Workflow                  # new type of k8s spec
+kind: Workflow
 metadata:
-  generateName: hello-world-    # name of the workflow spec
+  generateName: artifact-passing-
 spec:
-  entrypoint: whalesay          # invoke the whalesay template
+  entrypoint: artifact-example
   templates:
-  - name: whalesay              # name of the template
+  - name: artifact-example
+    steps:
+    - - name: generate-artifact
+        template: whalesay
+    - - name: consume-artifact
+        template: print-message
+        arguments:
+          artifacts:
+          - name: message
+            from: "{{steps.generate-artifact.outputs.artifacts.hello-art}}"
+
+  - name: whalesay
     container:
-      image: docker/whalesay
-      command: [cowsay]
-      args: ["hello world"]
-      resources:                # limit the resources
-        limits:
-          memory: 32Mi
-          cpu: 100m
+      image: docker/whalesay:latest
+      command: [sh, -c]
+      args: ["sleep 1; cowsay hello world | tee /tmp/hello_world.txt"]
+    outputs:
+      artifacts:
+      - name: hello-art
+        path: /tmp/hello_world.txt
+
+  - name: print-message
+    inputs:
+      artifacts:
+      - name: message
+        path: /tmp/message
+    container:
+      image: alpine:latest
+      command: [sh, -c]
+      args: ["cat /tmp/message"]
