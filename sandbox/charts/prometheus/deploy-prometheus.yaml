@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prometheus-deployment
-  namespace: prometheus
+  name: prometheus-sandbox
+  namespace: argocd
   labels:
      app: prometheus-server
 spec:
