@@ -14,7 +14,7 @@ spec:
         app: prometheus-ui
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+      - image: prom/prometheus
         name: prometheus-ui
         ports:
         - containerPort: 80
