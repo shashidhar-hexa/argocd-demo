@@ -1,39 +1,18 @@
-#
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: prometheus-deployment
-  namespace: prometheus
-  labels:
-     app: prometheus-server
+  name: prometheus #name of the appliaciton
+  namespace: argocd
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-        app: prometheus-server
-  template:
-    metadata:
-      labels:
-        app: prometheus-server
-    spec:
-      containers:
-        - name: prometheus
-          image: prom/prometheus
-          args:
-            - "--config.file=/etc/prometheus/prometheus.yml"
-            - "--storage.tsdb.path=/prometheus/"
-          ports:
-            - containerPort: 9090
-          volumeMounts:
-            - name: prometheus-config-volume
-              mountPath: /etc/prometheus/
-            - name: prometheus-storage-volume
-              mountPath: /prometheus/
-      volumes:
-        - name: prometheus-config-volume
-          configMap:
-            defaultMode: 420
-            name: prometheus-server-conf
-  
-        - name: prometheus-storage-volume
-          emptyDir: {}
+  project: default
+  source:
+    repoURL: 'https://github.com/hegdeshashi/argocd-demo.git'
+    targetRevision: HEAD
+    path: sandbox/charts/prometheus
+    helm:
+      parameters:
+        - name: livenessProbe.failureThreshold
+          value: "7"
+  destination:
+    server: https://kubernetes.default.svc #name of the aks cluster as per ARGO CD
+    namespace: monitoring
