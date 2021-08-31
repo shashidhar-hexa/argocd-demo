@@ -13,7 +13,7 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "sandbox/charts/prometheus/{{cluster}}", kubeconfigId: "mykubeconfig")
+          kubernetesDeploy(configs: "sandbox/ApplicationSet/application-prometheus.yaml", kubeconfigId: "mykubeconfig")
         }
       }
     }
