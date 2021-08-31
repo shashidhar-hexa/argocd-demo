@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus #name of the appliaciton
+  name: prometheus-sandbox #name of the appliaciton
   namespace: argocd
 spec:
   project: default
