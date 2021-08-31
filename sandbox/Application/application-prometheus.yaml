@@ -4,7 +4,7 @@ metadata:
   name: prometheus-sandbox #name of the appliaciton
   namespace: argocd
 spec:
-  project: default
+  project: sample
   source:
     repoURL: 'https://github.com/hegdeshashi/argocd-demo.git'
     targetRevision: HEAD
