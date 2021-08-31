@@ -3,24 +3,30 @@ kind: ApplicationSet
 metadata:
   name: prometheus-sandbox
   namespace: argocd
+  labels:
+    app: prometheus-sandbox
+    environment: sandbox
 spec:
   generators:
   - list:
       elements:
       - cluster: prometheus-sandbox
         url: https://kubernetes.default.svc
-      - cluster: prometheus-prod
-        url: https://kubernetes.default.svc
+        # - cluster: prometheus-prod
+        #url: https://kubernetes.default.svc
 
   template:
     metadata:
+      labels:
+        app: sandbox
       name: 'freddiemac-{{cluster}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/hegdeshashi/argocd-demo.git
         targetRevision: HEAD
-        path: sandbox/charts/prometheus/prometheus-sandbox/{{cluster}}
+        path: sandbox/charts/prometheus/{{cluster}}
       destination:
         server: '{{url}}'
         namespace: default
+
