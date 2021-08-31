@@ -2,5 +2,5 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/hegdeshashi/argocd-example-apps
+    repoURL: https://github.com/hegdeshashi/argocd-demo
     targetRevision: HEAD
