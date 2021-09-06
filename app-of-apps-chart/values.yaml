@@ -4,7 +4,7 @@ clusters:
   apps:
     prometheus:
       enabled: true
-      version: "4.3.2"
+      version: "Sep06"
 
     sampleApp:
       enabled: true
@@ -15,7 +15,7 @@ clusters:
   apps:
     prometheus:
       enabled: true
-      version: "0.0.1"
+      version: "Sep06"
     sampleApp:
       enabled: true
       branch: HEAD
