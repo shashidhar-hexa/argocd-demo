@@ -30,4 +30,3 @@ Create chart name and version as used by the chart label.
 {{- define "helm-guestbook.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
-© 2021 GitHub, Inc.
