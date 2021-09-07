@@ -4,7 +4,7 @@ clusters:
   apps:
     prometheus:
       enabled: true
-      version: "0.0.1"
+      version: "2.0.0"
 
     sampleApp:
       enabled: true
