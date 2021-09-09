@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: https://github.com/hegdeshashi/argocd-demo.git
         targetRevision: HEAD
-        path: applicationsets/prometheus-helm
+        path: environments/applicationsets-dev
         helm:
           releaseName: '{{image}}-prometheus'
           parameters:
