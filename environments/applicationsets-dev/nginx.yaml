@@ -17,7 +17,7 @@ spec:
         port: "8080"
   template:
     metadata:
-      name: '{{cluster}}-nginx'
+      name: 'my-{{cluster}}-nginx'
     spec:
       project: default
       source:
