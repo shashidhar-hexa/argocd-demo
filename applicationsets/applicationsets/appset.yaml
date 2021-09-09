@@ -15,6 +15,10 @@ spec:
         url: https://29826A98732927DB9FCA848011A11445.gr7.ap-south-1.eks.amazonaws.com
         image: nginx:1.21.1
         port: "8080"
+      - cluster: server3
+        url: https://2973EFECADB5697656E8D3C5680DCEA0.gr7.ap-south-1.eks.amazonaws.com
+        image: nginx:1.21.1
+        port: "8080" 
   template:
     metadata:
       name: '{{cluster}}-nginx'
