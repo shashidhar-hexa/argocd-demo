@@ -17,7 +17,7 @@ spec:
         port: "8080"
   template:
     metadata:
-      name: '{{cluster}}--prometheus'
+      name: '{{cluster}}-my-prometheus'
     spec:
       project: default
       source:
