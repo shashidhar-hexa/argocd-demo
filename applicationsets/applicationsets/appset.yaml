@@ -12,7 +12,7 @@ spec:
         image: nginx:1.14.2
         port: "80"
       - cluster: server2
-        url: https://A28F2B73B4094DA3943AA394EE4884F5.gr7.us-west-2.eks.amazonaws.com
+        url: https://29826A98732927DB9FCA848011A11445.gr7.ap-south-1.eks.amazonaws.com
         image: nginx:1.21.1
         port: "8080"
   template:
@@ -21,9 +21,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/Venkat-Sudharsanam/test.git
+        repoURL: https://github.com/hegdeshashi/argocd-demo.git
         targetRevision: HEAD
-        path: nginxhelm
+        path: applicationsets
         helm:
           releaseName: '{{image}}-nginx'
           parameters:
