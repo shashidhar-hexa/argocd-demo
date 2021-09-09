@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: masternginx
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: server1
+        url: https://kubernetes.default.svc
+        image: nginx:1.14.2
+        port: "80"
+      - cluster: server2
+        url: https://29826A98732927DB9FCA848011A11445.gr7.ap-south-1.eks.amazonaws.com
+        image: nginx:1.21.1
+        port: "8080"
+  template:
+    metadata:
+      name: '{{cluster}}-nginx'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/hegdeshashi/argocd-demo.git
+        targetRevision: HEAD
+        path: applicationsets/nginxhelm
+        helm:
+          releaseName: '{{image}}-nginx'
+          parameters:
+          - name: image
+            value: '{{image}}'
+          - name: port
+            value: '{{port}}'
+      destination:
+        server: '{{url}}'
+        namespace: default
+      syncPolicy:
+        automated: {}
