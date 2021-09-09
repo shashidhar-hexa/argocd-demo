@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+  name: try-nginx
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: image
+        value: nginx:1.14.2
+      - name: port
+        value: 80
+      releaseName: try-nginx
+    path: applicationsets
+    repoURL: https://github.com/hegdeshashi/argocd-demo.git
