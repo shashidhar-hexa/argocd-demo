@@ -15,5 +15,5 @@ spec:
       - name: port
         value: 80
       releaseName: try-nginx
-    path: nginxhelm
-    repoURL: https://github.com/Venkat-Sudharsanam/test.git
+    path: applicationsets
+    repoURL: https://github.com/hegdeshashi/argocd-demo.git
