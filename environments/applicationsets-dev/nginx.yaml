@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: https://github.com/hegdeshashi/argocd-demo.git
         targetRevision: HEAD
-        path: applicationsets/nginxhelm
+        path: environments/applicationsets-dev
         helm:
           releaseName: '{{image}}-nginx'
           parameters:
