@@ -5,5 +5,16 @@ clusters:
     prometheus:
       enabled: true
       version: "2.0.0"
+    sampleApp:
+      enabled: true
+      branch: HEAD
 
-
+- name: Tensai
+  destinationServer: https://29826A98732927DB9FCA848011A11445.gr7.ap-south-1.eks.amazonaws.com
+  apps:
+    prometheus:
+      enabled: true
+      version: "0.0.1"
+    sampleApp:
+      enabled: true
+      branch: HEAD
