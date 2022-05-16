@@ -6,7 +6,4 @@ clusters:
       enabled: true
       version: "2.0.0"
 
-    sampleApp:
-      enabled: true
-      branch: HEAD
 
