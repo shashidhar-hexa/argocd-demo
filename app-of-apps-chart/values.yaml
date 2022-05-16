@@ -9,7 +9,7 @@ clusters:
       enabled: true
       branch: HEAD
 
-- name: Tensai
+- name: Azure
   destinationServer: https://29826A98732927DB9FCA848011A11445.gr7.ap-south-1.eks.amazonaws.com
   apps:
     prometheus:
